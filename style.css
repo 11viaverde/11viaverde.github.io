@@ -1,0 +1,264 @@
+/********* GLOBAL STYLES *********/
+
+/***
+ * Typography
+ ***/
+
+/* Typefaces */
+body { font-family: RennerBook; }
+#page-title, #strip-title { font-family: RennerMedium; }
+.subtitle { font-family: RennerBookItalic; }
+.comment-text { font-family: Verdana, sans-serif; }
+.snip { font-style: oblique; }
+
+/* Sizing */
+body { font-size: 13px; }
+
+.metadata { font-size: .75rem; }
+.toggle { font-size: .625rem; }
+
+#menu { font-size: 1rem; }
+#page-title { font-size: 3rem; }
+#strip-title { font-size: 2rem; line-height: 2.5rem; }
+#page-subtitle, #strip-subtitle { font-size: 1rem; }
+.comment-text { font-size: .75rem; line-height: 1rem; }
+
+/***
+ * Layout
+ ***/
+
+html { height: 100%; }
+body > div {
+    float: left;
+    clear: left;
+    width: calc(100% - 5.125rem);
+    margin-left: 4rem;
+    padding-left: 1rem;
+    border-left: .125rem solid;
+    margin-bottom: 1rem;
+}
+#content { max-width: 79ch; }
+
+/* Horizontal ul stuff */
+#menu ul { margin: 0; padding: 0; }
+#menu ul li { display: inline-block; margin-right: 2rem; }
+#menu ul li:last-child { margin-right: 0; }
+
+.own-line { float: left; clear: left; }
+.comment-text { float: left; clear: both; }
+
+/***
+ * Colors
+ ***/
+body > div { border-left-color: #9c0; }
+.plus { color: #0a0; }
+.minus { color: #a00; }
+
+/********* PAGE-SPECIFIC STYLES *********/
+
+/* For strips table */
+#strips-table {
+    width: 60ch;
+    font-size: inherit;
+    border-spacing: 0;
+} 
+
+#strips-table tr { margin-bottom: .75rem; }
+#strips-table tr:last-of-type { margin-bottom: 0; }
+
+#strips-table tr td { padding: .25rem; }
+
+#strips-table tr:nth-child(2n) { background-color: #f4f4f4; }
+
+#strips-table tr td:nth-child(1) { width: 12ch; }
+#strips-table tr td:nth-child(2) { max-width: 20ch; }
+
+
+/* For comments */
+.comment {
+    padding-left: .5rem;
+    border-left: .0625rem solid #bbb;
+    margin-top: 1rem;
+}
+
+#content > .comment:first-child { padding-top: 0; }
+.comment:first-child { margin-top: 0; }
+
+span.nosnip, span.snip {
+    padding-top: .125rem;
+    display: block;
+    float: left;
+    clear: both;
+    margin-left: 0;
+}
+
+.snip {
+    color: #aaa;
+}
+
+#strips-table ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#strips-table ul li {
+    padding-bottom: 0.5rem;
+}
+
+#strips-table ul li:last-child {
+    padding-bottom: 0;
+}
+
+
+/***
+ * A11y stuff
+ ***/
+[aria-hidden='true'] .hideable, [data-a11y-toggle]:not([aria-controls]) { display: none; } 
+span[role='button']::before { content: '[hide]'; }
+[aria-hidden='true'] span[role='button']::before { content: '[unhide]'; }
+
+/********* MOBILE STYLES *********/
+@media screen and (max-width: 800px) {
+    body {font-size: 12px;}
+    div#header, div#content, div#menu {
+        width: calc(100% - 2.125rem);
+        margin-left: 1rem;
+    }
+}
+
+.feed, .date-labels {
+    float: left;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+}
+
+.feed-title {
+    height: 1rem;
+    padding: .5rem;
+}
+
+.feed::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background-color: #000;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -0.5px;
+    z-index: -1;
+}
+
+.feed > hr {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+    border-color: #fff;
+}
+
+.feed-item {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 8px;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -9px;
+}
+
+
+.feed-item-text {
+    display: inline-block;
+    visibility: collapse;
+    width: auto;
+    padding: 1rem;
+    background-color: #eee;
+    margin-top: -8px;
+}
+
+.date-labels {
+    width: 100px;
+    min-width: 100px;
+    line-height: 1.5rem;
+}
+
+.date-label {
+    margin-top: -.75rem;
+    text-transform: small-caps;
+}
+
+.left {
+    margin-left: 1rem;
+}
+
+.right {
+    margin-right: 1rem;
+}
+
+.feed-item:hover {
+    z-index: 1;
+    background-color: #c1c;
+}
+
+.feed-item:hover > .feed-item-text {
+    visibility: visible;
+    min-width: 10rem;
+}
+
+.spacer {
+    height: 10px;
+}
+
+.feed-item-title {
+    margin: .5rem 0;
+    font-size: 1.25rem;
+
+    font-weight: bold;
+}
+
+#blogs-table {
+    border: 0;
+}
+
+#blogs-table td {
+    width: 7rem;
+    padding: 0;
+}
+
+#blogs-table th {
+    width: 7rem;
+    padding: .5rem;
+}
+
+th {
+    padding: .5rem;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 1;
+}
+
+.post-title {
+    font-size: .75rem;
+}
+
+.post-updated-time {
+    font-size: .5rem;
+    color: #888;
+}
+
+h1 {
+    margin: 2rem 0 0 0;
+}
+
+h1:first-child {
+    margin-top: .5rem;
+}
